@@ -6,6 +6,7 @@ Análisis secuencial de números de 4 dígitos (0000–9999).
 - [`docs/version1.md`](docs/version1.md) — **Versión 1 congelada**: fórmulas exactas y verificación.
 - [`data/resultados.csv`](data/resultados.csv) — base de datos autoritativa.
 - [`src/v1.py`](src/v1.py) — implementación congelada de la Versión 1.
+- [`docs/proceso_activo.md`](docs/proceso_activo.md) / [`src/proceso.py`](src/proceso.py) — **proceso activo** (V1 + regla del lunes).
 
 ## Uso
 
