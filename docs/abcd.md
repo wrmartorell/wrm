@@ -28,3 +28,14 @@ Vertical sola: valor exacto en 8/108 posiciones.
 - Ninguna variante logró las 4 posiciones en ninguna fecha.
 - cruzada/v12 fue la mejor en reserva (37%), pero fue de las peores en aprendizaje; escogerla sería usar la reserva (regla 28.6).
 - Estado: experimento documentado; no se incorpora al proceso.
+
+## Prueba: A/B/C/D antes del proceso establecido
+
+A/B/C/D (misma/completa) aporta el valor #1 de cada posición; ese conjunto entra al proceso como evidencia. Reserva 31/08 → 30/09 (27 fechas). Top 5: ≥2 / ≥3 / todos los dígitos / aciertos.
+
+| Base | Sin A/B/C/D | A/B/C/D primero | A/B/C/D en #5 (como 37.1) |
+|---|---|---|---|
+| V1 | 18 / 7 / 4 / 52 | 16 / 3 / 0 / 46 | 17 / 7 / 3 / 49 |
+| Ventana 12 | 20 / 6 / 2 / 52 | 12 / 4 / 0 / 42 | 19 / 8 / 2 / 53 |
+
+Lectura: ponerlo primero empeora en todo; como #5 queda prácticamente igual. No se incorpora.
