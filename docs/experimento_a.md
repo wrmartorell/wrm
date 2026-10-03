@@ -42,3 +42,13 @@ Fecha: 3 de octubre de 2026. Código: `src/experimento_a.py`. La Versión 1 no s
 ## Estado
 
 Resultado documentado. **No cambia la Versión 1** hasta que el usuario decida.
+
+## Auditoría 28–30 de septiembre (ya conocidos; no cuentan para escoger)
+
+| Fecha | Real | V1 Top 5 | Aciertos | Ventana 12 Top 5 | Aciertos |
+|---|---|---|---|---|---|
+| 28/09 | 0565 | 7 4 3 8 2 | 0 | 7 6 3 0 2 | 2 |
+| 29/09 | 8230 | 8 5 4 3 7 | 2 | 8 7 1 3 5 | 2 |
+| 30/09 | 0438 | 8 4 3 5 7 | 3 | 6 8 7 3 1 | 2 |
+
+Después de medirse, los tres se incorporaron a la base (`data/resultados.csv`).

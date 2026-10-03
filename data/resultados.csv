@@ -48,6 +48,6 @@ fecha,dia,numero,estado,nota
 2026-09-24,jueves,6811,autoritativo,
 2026-09-25,viernes,0545,autoritativo,
 2026-09-26,sabado,8173,autoritativo,
-2026-09-28,lunes,0565,revelado_conocido,Seccion 9.4: ya conocido; solo auditoria, no prueba ciega
-2026-09-29,martes,8230,revelado_conocido,Seccion 9.4: ya conocido; solo auditoria, no prueba ciega
-2026-09-30,miercoles,0438,revelado_conocido,Seccion 9.4: ya conocido; solo auditoria, no prueba ciega
+2026-09-28,lunes,0565,autoritativo,Incorporado 03/10 (seccion 9.4: era conocido; medido solo como auditoria)
+2026-09-29,martes,8230,autoritativo,Incorporado 03/10 (seccion 9.4: era conocido; medido solo como auditoria)
+2026-09-30,miercoles,0438,autoritativo,Incorporado 03/10 (seccion 9.4: era conocido; medido solo como auditoria)
