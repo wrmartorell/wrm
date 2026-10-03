@@ -37,3 +37,16 @@ Dígitos más repetidos en el Top 4 (reserva): V1 4(27) 5(24) 8(23); V2 5(16) 0(
 ## Estado
 
 V2 en prueba. Salida del 1 de octubre congelada en `docs/predicciones/2026-10-01.md` antes de conocer el resultado.
+
+## Re-prueba con junio y julio (104 resultados)
+
+Corrección previa: con el sábado 4 de julio faltante, viernes→lunes también cruza el domingo (antes solo se contaba sábado→lunes).
+
+| Bloque | Versión | ≥2 | ≥3 | Todos | Aciertos (Top 5 / Bottom 5) |
+|---|---|---|---|---|---|
+| Aprendizaje 15/06–31/07 (40) | V1 | 26/40 (65%) | 6 | 1 | 72 / 72 |
+| | V2 | 31/40 (78%) | 9 | 3 | 81 / 63 |
+| Reserva 01/08–30/09 (52) | V1 | 36/52 (69%) | 15 | 4 | 99 / 86 |
+| | V2 | 34/52 (65%) | 10 | 3 | 96 / 89 |
+
+Lectura: V2 ganó en aprendizaje y perdió en reserva; con menos historia había pasado lo contrario. La ventaja de V2 no es estable. En la reserva ninguna de las dos tiene un orden claro (#6/#7 aciertan tanto o más que #1). V1 con más historia sigue repitiendo dígitos fijos (3 en el Top 4 50/52).

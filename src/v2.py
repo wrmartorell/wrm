@@ -33,7 +33,7 @@ def transiciones(previos, lunes):
     """Pares consecutivos respetando el reset del domingo."""
     pares = []
     for (d1, a), (d2, b) in zip(previos, previos[1:]):
-        cruza_domingo = d1.weekday() == 5 and d2.weekday() == 0
+        cruza_domingo = d2.weekday() == 0 and d1 < d2  # cualquier paso a lunes cruza el domingo (ej. vie→lun si falta el sábado)
         if lunes == cruza_domingo:
             pares.append((a, b))
     return pares
