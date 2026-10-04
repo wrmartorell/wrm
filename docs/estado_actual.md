@@ -32,7 +32,7 @@ Regla para aceptar cambios: no empeorar en ningún período (jun-jul, ago-sep) y
 
 01/10: la salida del proceso activo se calculó después de conocer aciertos parciales (no totalmente ciega).
 
-## Propuesta pendiente de aprobación: dos selecciones (A + B)
+## Dos selecciones (A + B) — documentado, NO se usa por ahora (decisión del usuario 04/10)
 
 - A = proceso activo (Top 7 → grupos); B = V2 (Top 7 → grupos). 35 grupos en total, alternando A y B.
 - Grupo real en los 35: jun-jul 15% → **22%**, ago-sep 21% → **21%**; ciegas 1/2 (vs 0/2). Pasa la regla.
