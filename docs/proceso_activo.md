@@ -1,12 +1,21 @@
 # Proceso activo
 
-Código: `src/proceso.py`. Actualizado: 03/10/2026.
+Código: `src/proceso.py`. Actualizado: 04/10/2026.
 
 1. **Base cronológica** (lunes a sábado; domingo = reset). 104 resultados, 01/06 → 30/09/2026. 04/07 sin sorteo. Validación: `src/validar.py`.
-2. **Motor antiguo** (V1): toda la historia hasta el día anterior; repetidos una vez; S(y) = promedio de P(y|x); desempate dígito menor.
-3. **Vertical**: (2·último − penúltimo) mod 10 por posición, mismo día de semana.
-4. **Combinación 37.1** → Top 5 / Bottom 5.
-5. **Regla del lunes** (aprobada 03/10): los lunes, los dígitos del resultado anterior (sábado) van primero en el orden del ranking; se completa con V1. Verificación: 16 lunes, ≥2 en Top 5 de 10/16 → 13/16.
+2. **Motor antiguo** (V1, sin cambios): toda la historia; repetidos una vez; S(y) = promedio de P(y|x); desempate dígito menor.
+3. **Señal de los 2 días anteriores** (aprobada 04/10, reemplaza a la vertical): por posición A/B/C/D, el día anterior + su salto más común de un día, y dos días antes + su salto más común a dos días (solo historia previa).
+4. **Plan de protección** (aprobado 04/10): el Top 4 del motor antiguo queda fijo; la señal de los 2 días solo decide el #5 y el orden del #6–#10. Un cambio nuevo se acepta solo si no empeora en ningún período y mejora en al menos uno.
+5. **Regla del lunes** (aprobada 03/10): los lunes, los dígitos del sábado van primero.
 6. **Grupos de permutación**: 715 → 55 → 10 cuando haya dígitos confirmados (criterio pendiente).
+
+## Verificación (fecha por fecha)
+
+| Bloque | ≥2 | ≥3 | Aciertos |
+|---|---|---|---|
+| Jun-jul (40) | 29 | 12 | 81 |
+| Ago-sep (52) | 38 | 16 | 103 |
+
+Antes (V1 + vertical + lunes): jun-jul 28 / 5 / 73; ago-sep 37 / 16 / 101.
 
 `src/v1.py` sigue congelado como referencia (24/24, 16/24, 6/24, 1/24).
