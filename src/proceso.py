@@ -12,6 +12,12 @@ Proyecto play — Proceso activo.
    la señal de los 2 días solo decide el #5 y el orden del #6 al #10.
 5. Regla del lunes (aprobada 03/10/2026): los lunes, los dígitos del resultado anterior
    (sábado) van primero, en el orden del ranking.
+6. Grupos de permutación (aprobado 04/10/2026): grupos de 4 dígitos formados con el Top 7,
+   sin tríos ni cuatro iguales (161 grupos), ordenados por
+   B) cuántos dígitos comparte el grupo con el resultado anterior, según lo que suele
+      compartirse (dentro de la semana / sábado→lunes), y
+   C) tipo de grupo (4 distintos, un par, dos pares), según cuánto ha salido cada tipo;
+   desempate: suma de posiciones en el ranking. Se usan los primeros 35.
 
 Uso:
     python3 src/proceso.py              # verificación jun-jul / ago-sep
@@ -21,6 +27,7 @@ Uso:
 import datetime as dt
 import sys
 from collections import Counter
+from itertools import combinations_with_replacement
 
 from v1 import cargar, motor_antiguo
 
@@ -57,6 +64,29 @@ def salida(filas, fecha):
     return {"ranking_antiguo": ranking, "S": S, "dia_anterior": p1, "dos_dias": p2, "combinado": comb}
 
 
+def tipo(g):
+    return tuple(sorted(Counter(g).values(), reverse=True))
+
+
+def grupos(filas, fecha, comb=None, n=35):
+    """Grupos de permutación ordenados (paso 6) usando solo datos anteriores a la fecha."""
+    previos = [(d, x) for d, x in filas if d < fecha]
+    nums = [x for _, x in previos]
+    comb = comb or salida(filas, fecha)["combinado"]
+    pos = {x: i for i, x in enumerate(comb)}
+    lunes = fecha.weekday() == 0
+    comp = Counter(len(set(a) & set(b)) for (_, a), (d2, b) in zip(previos, previos[1:])
+                   if (d2.weekday() == 0) == lunes)
+    tot = sum(comp.values()) or 1
+    tipos = Counter(tipo(x) for x in nums)
+    ultimo = set(nums[-1])
+    candidatos = [g for g in combinations_with_replacement(sorted(comb[:7]), 4)
+                  if tipo(g) not in ((3, 1), (4,))]
+    candidatos.sort(key=lambda g: (-(comp[len(set(g) & ultimo)] / tot + tipos[tipo(g)] / len(nums)),
+                                   sum(pos[x] for x in g), "".join(g)))
+    return ["".join(g) for g in candidatos[:n]], len(candidatos)
+
+
 def verificar():
     filas = cargar(estados=TODO)
     for nombre, a, b in BLOQUES:
@@ -67,7 +97,13 @@ def verificar():
             ge2 += h >= 2
             ge3 += h >= 3
             aciertos += h
-        print(f"{nombre}: ≥2 {ge2}/{n} | ≥3 {ge3}/{n} | aciertos {aciertos}")
+        g20 = g35 = 0
+        for d, real in [(d, x) for d, x in filas if a <= d <= b]:
+            lista, _ = grupos(filas, d, n=35)
+            gr = "".join(sorted(real))
+            g35 += gr in lista
+            g20 += gr in lista[:20]
+        print(f"{nombre}: ≥2 {ge2}/{n} | ≥3 {ge3}/{n} | aciertos {aciertos} | grupo real en los primeros 20: {g20}, 35: {g35}")
 
 
 def una_fecha(fecha):
@@ -76,6 +112,11 @@ def una_fecha(fecha):
     print(f"{fecha}: ranking antiguo {' '.join(s['ranking_antiguo'])}")
     print(f"Señal 2 días: día anterior → {s['dia_anterior']} | dos días antes → {s['dos_dias']}")
     print(f"Top 5 {' '.join(s['combinado'][:5])} | Bottom 5 {' '.join(s['combinado'][5:])}")
+    print(f"Top 7: {' '.join(s['combinado'][:7])}")
+    lista, total = grupos(filas, fecha, s["combinado"])
+    print(f"Grupos (primeros 35 de {total}):")
+    for i in range(0, 35, 7):
+        print("  " + "  ".join(f"{i + j + 1:>2}.{g}" for j, g in enumerate(lista[i:i + 7])))
 
 
 if __name__ == "__main__":
